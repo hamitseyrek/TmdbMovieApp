@@ -20,6 +20,7 @@
 		5E719E1628135E6500FD0BB8 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E719E1528135E6500FD0BB8 /* Movies.swift */; };
 		5E719E1828135EAF00FD0BB8 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E719E1728135EAF00FD0BB8 /* MovieTests.swift */; };
 		5E719E1B28135F5000FD0BB8 /* Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E719E1A28135F5000FD0BB8 /* Decoders.swift */; };
+		5E719E1F281360A700FD0BB8 /* movie.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E719E1E281360A700FD0BB8 /* movie.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		5E719E1528135E6500FD0BB8 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		5E719E1728135EAF00FD0BB8 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		5E719E1A28135F5000FD0BB8 /* Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoders.swift; sourceTree = "<group>"; };
+		5E719E1E281360A700FD0BB8 /* movie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movie.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		5E719D9628134A8300FD0BB8 /* TmdbMovieAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				5E719E1D2813609100FD0BB8 /* JsonForTest */,
 				5E719E1728135EAF00FD0BB8 /* MovieTests.swift */,
 			);
 			path = TmdbMovieAppTests;
@@ -233,6 +236,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5E719E1D2813609100FD0BB8 /* JsonForTest */ = {
+			isa = PBXGroup;
+			children = (
+				5E719E1E281360A700FD0BB8 /* movie.json */,
+			);
+			path = JsonForTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E719E1F281360A700FD0BB8 /* movie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

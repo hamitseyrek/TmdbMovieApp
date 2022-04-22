@@ -10,14 +10,14 @@ import Foundation
 struct Movie: Codable {
     
     let id: Int
-    let name, overview, title: String
+    let overview, title: String
     let posterPath: String?
     let releaseDate: Date
     
     enum CodingKeys : String, CodingKey {
         
         case id
-        case name, overview, title
+        case overview, title
         case posterPath = "poster_path"
         case releaseDate = "release_date"
     }

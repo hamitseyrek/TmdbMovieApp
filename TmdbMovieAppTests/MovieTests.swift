@@ -9,28 +9,20 @@ import XCTest
 @testable import TmdbMovieApp
 
 class MovieTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
+    
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        
+        let bundle = Bundle(for: MovieTests.self)
+        guard let url = bundle.url(forResource: "movie", withExtension: "json") else { return }
+        let data = try Data(contentsOf: url)
+        
+        let decoder = Decoders.releaseDateDecoder
+        let movie = try decoder.decode(Movie.self, from: data)
+        
+        XCTAssertEqual(movie.id, 313297)
+        XCTAssertEqual(movie.overview, "In the epic fantasy, scruffy, kindhearted Kubo ekes out a humble living while devotedly caring for his mother in their sleepy shoreside village. It is a quiet existence – until a spirit from the past catches up with him to enforce an age-old vendetta. Suddenly on the run from gods and monsters, Kubo’s chance for survival rests on finding the magical suit of armor once worn by his fallen father, the greatest samurai the world has ever known. Summoning courage, Kubo embarks on a thrilling odyssey as he faces his family’s history, navigates the elements, and bravely fights for the earth and the stars.")
+        XCTAssertEqual(movie.title, "Kubo and the Two Strings")
+        XCTAssertEqual(movie.posterPath, "/3Kr9CIIMcXTPlm6cdZ9y3QTe4Y7.jpg")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
 }
