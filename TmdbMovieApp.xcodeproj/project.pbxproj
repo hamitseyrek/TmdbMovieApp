@@ -16,6 +16,7 @@
 		5E719D9828134A8300FD0BB8 /* TmdbMovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E719D9728134A8300FD0BB8 /* TmdbMovieAppTests.swift */; };
 		5E719DA228134A8300FD0BB8 /* TmdbMovieAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E719DA128134A8300FD0BB8 /* TmdbMovieAppUITests.swift */; };
 		5E719DA428134A8300FD0BB8 /* TmdbMovieAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E719DA328134A8300FD0BB8 /* TmdbMovieAppUITestsLaunchTests.swift */; };
+		5E719DB128134C8600FD0BB8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5E719DB028134C8600FD0BB8 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5E719D9D28134A8300FD0BB8 /* TmdbMovieAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TmdbMovieAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E719DA128134A8300FD0BB8 /* TmdbMovieAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbMovieAppUITests.swift; sourceTree = "<group>"; };
 		5E719DA328134A8300FD0BB8 /* TmdbMovieAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbMovieAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5E719DB028134C8600FD0BB8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		5E719D7428134A8200FD0BB8 = {
 			isa = PBXGroup;
 			children = (
+				5E719DB028134C8600FD0BB8 /* README.md */,
 				5E719D7F28134A8200FD0BB8 /* TmdbMovieApp */,
 				5E719D9628134A8300FD0BB8 /* TmdbMovieAppTests */,
 				5E719DA028134A8300FD0BB8 /* TmdbMovieAppUITests */,
@@ -233,6 +236,7 @@
 			files = (
 				5E719D8D28134A8300FD0BB8 /* LaunchScreen.storyboard in Resources */,
 				5E719D8A28134A8300FD0BB8 /* Assets.xcassets in Resources */,
+				5E719DB128134C8600FD0BB8 /* README.md in Resources */,
 				5E719D8828134A8200FD0BB8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
