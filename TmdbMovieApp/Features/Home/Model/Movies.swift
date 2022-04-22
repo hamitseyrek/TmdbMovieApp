@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieList: Codable {
+struct Movies: Codable {
     var results: [Movie]
     var totalPage: Int
     
@@ -17,7 +17,7 @@ struct MovieList: Codable {
     }
 }
 
-extension MovieList: Equatable {
+extension Movies: Equatable {
     
     static func == (lhs: MovieList, rhs: MovieList) -> Bool {
         return lhs.results == rhs.results
