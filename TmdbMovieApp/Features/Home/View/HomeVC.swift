@@ -70,6 +70,7 @@ extension HomeVC {
         onNext: { [weak self] movies in
           self?.movies = movies
             print("movies in view: \(movies.map { $0.title })")
+            //print("movies in view: \(movies.map { $0.releaseDate.formatted(.iso8601.year()) })")
           self?.updateTableView()
         }, onError: { error in
           print("error in view: \(error)")
@@ -97,13 +98,12 @@ extension HomeVC: UITableViewDataSource {
 
 extension HomeVC: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 200
+    return 146
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     var movie = movies[indexPath.row]
-//    tableView.tableHeaderView = nil
-    //****4444 router.naviagteToDetailView(movieId: String(movie.movieId))
+      // do something
   }
 }
 
