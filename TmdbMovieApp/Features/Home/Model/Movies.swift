@@ -19,7 +19,7 @@ struct Movies: Codable {
 
 extension Movies: Equatable {
     
-    static func == (lhs: MovieList, rhs: MovieList) -> Bool {
+    static func == (lhs: Movies, rhs: Movies) -> Bool {
         return lhs.results == rhs.results
     }
 }

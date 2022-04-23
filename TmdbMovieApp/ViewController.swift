@@ -7,13 +7,48 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+import RxSwift
 
+class HomeViewModel {
+  private let managerConnections = ApiService()
+
+
+  func getUpcomingMovies() -> Observable<[Movie]> {
+    return managerConnections.getUpcomingMovies()
+  }
+  
+}
+
+class ViewController: UIViewController {
+    
+    
+    private var viewModel = HomeViewModel()
+    
+    private var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.displayMovies()
     }
 
 
+}
+
+extension ViewController {
+  private func displayMovies() {
+    return viewModel.getUpcomingMovies()
+      // Handle RxSwift concurrency, execute on Main Thread
+      .subscribe(on: MainScheduler.instance)
+      .observe(on: MainScheduler.instance)
+      // Subscribe observer to Observable
+      .subscribe(
+        onNext: { [weak self] movies in
+            print("movies in view: \(movies.map { $0.title })")
+        }, onError: { error in
+          print("error in view: \(error)")
+          // Finalize the RxSwift sequence (Disposable)
+        }, onCompleted: {}).disposed(by: disposeBag)
+  }
 }
 
