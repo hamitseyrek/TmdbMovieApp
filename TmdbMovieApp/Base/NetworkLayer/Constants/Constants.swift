@@ -12,7 +12,7 @@ struct Constants {
         static let upcomingUrl = "https://api.themoviedb.org/3/movie/upcoming"
         static let nowPlayingUrl = "https://api.themoviedb.org/3/movie/now_playing"
         static let detailUrl = "https://api.themoviedb.org/3/movie/"
-        static let imageUrl = "https://image.tmdb.org/t/p/w200/"
+        static let imageUrl = "https://image.tmdb.org/t/p/w200"
     }
     
     struct Params {

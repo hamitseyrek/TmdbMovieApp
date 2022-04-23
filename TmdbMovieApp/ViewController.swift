@@ -9,16 +9,6 @@ import UIKit
 
 import RxSwift
 
-class HomeViewModel {
-  private let managerConnections = ApiService()
-
-
-  func getUpcomingMovies() -> Observable<Movie> {
-      return managerConnections.getMovieDetail(movieID: 313297)
-  }
-  
-}
-
 class ViewController: UIViewController {
     
     
@@ -29,22 +19,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.displayMovies()
+        self.getUpcomingMovies()
     }
 
 
 }
 
 extension ViewController {
-  private func displayMovies() {
-    return viewModel.getUpcomingMovies()
+  private func getUpcomingMovies() {
+      return viewModel.getUpcomingMovies()
       // Handle RxSwift concurrency, execute on Main Thread
       .subscribe(on: MainScheduler.instance)
       .observe(on: MainScheduler.instance)
       // Subscribe observer to Observable
       .subscribe(
-        onNext: {
-            print("movies in view: \($0.title)")
+        onNext: { movies in
+            print("movies in view: \(movies.map { $0.releaseDate.formatted(.iso8601.year()) })")
         }, onError: { error in
           print("error in view: \(error)")
           // Finalize the RxSwift sequence (Disposable)

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="TmdbMovieApp" customModuleProvider="target">
+            <connections>
+                <outlet property="activity" destination="zQ5-gC-MGU" id="aCW-Pa-gmn"/>
+                <outlet property="tableView" destination="LPk-E0-ZxT" id="mQP-qc-IFh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2PL-jd-8Lj">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2PL-jd-8Lj" secondAttribute="height" multiplier="414:271" id="8CG-Sj-l9c"/>
+                        <constraint firstAttribute="height" constant="271" id="dsA-m2-3sG"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LPk-E0-ZxT">
+                    <rect key="frame" x="0.0" y="271" width="414" height="625"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="zQ5-gC-MGU">
+                    <rect key="frame" x="177" y="418" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="czK-iQ-rQt"/>
+                        <constraint firstAttribute="height" constant="60" id="p2p-ds-57Y"/>
+                    </constraints>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="LPk-E0-ZxT" firstAttribute="top" secondItem="2PL-jd-8Lj" secondAttribute="bottom" id="6vw-eR-KAC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2PL-jd-8Lj" secondAttribute="trailing" id="FSp-4z-Bye"/>
+                <constraint firstItem="2PL-jd-8Lj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LM9-8z-kvr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="2PL-jd-8Lj" secondAttribute="top" constant="44" id="TU4-gs-Mme"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LPk-E0-ZxT" secondAttribute="trailing" id="YFL-99-YHP"/>
+                <constraint firstItem="zQ5-gC-MGU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="axn-Xd-Cgb"/>
+                <constraint firstItem="LPk-E0-ZxT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mM4-kf-T8O"/>
+                <constraint firstItem="LPk-E0-ZxT" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="34" id="oO8-RC-PbB"/>
+                <constraint firstItem="zQ5-gC-MGU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pTS-zF-FL0"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="86.383928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
