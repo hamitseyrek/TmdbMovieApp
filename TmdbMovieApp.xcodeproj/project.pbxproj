@@ -32,6 +32,7 @@
 		5E719E4C2814327600FD0BB8 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E719E4A2814327600FD0BB8 /* MovieCell.swift */; };
 		5E719E4D2814327600FD0BB8 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E719E4B2814327600FD0BB8 /* MovieCell.xib */; };
 		5E719E5028144D7B00FD0BB8 /* MyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E719E4F28144D7B00FD0BB8 /* MyHelper.swift */; };
+		5E719E5228144E6100FD0BB8 /* MyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E719E5128144E6100FD0BB8 /* MyExtension.swift */; };
 		AC537CBE1B4F8EBD2A2A0056 /* Pods_TmdbMovieApp_TmdbMovieAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96EC9B4B1303BD8592E682A4 /* Pods_TmdbMovieApp_TmdbMovieAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		5E719E4A2814327600FD0BB8 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		5E719E4B2814327600FD0BB8 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		5E719E4F28144D7B00FD0BB8 /* MyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHelper.swift; sourceTree = "<group>"; };
+		5E719E5128144E6100FD0BB8 /* MyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtension.swift; sourceTree = "<group>"; };
 		7750077606179FD827809D59 /* Pods-TmdbMovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TmdbMovieApp.debug.xcconfig"; path = "Target Support Files/Pods-TmdbMovieApp/Pods-TmdbMovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7B4D229A504940D5DF5170AF /* Pods-TmdbMovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TmdbMovieAppTests.debug.xcconfig"; path = "Target Support Files/Pods-TmdbMovieAppTests/Pods-TmdbMovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		962D83A84AA4212D81CA43C6 /* Pods_TmdbMovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TmdbMovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -334,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				5E719E4F28144D7B00FD0BB8 /* MyHelper.swift */,
+				5E719E5128144E6100FD0BB8 /* MyExtension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 			files = (
 				5E719E4C2814327600FD0BB8 /* MovieCell.swift in Sources */,
 				5E719E5028144D7B00FD0BB8 /* MyHelper.swift in Sources */,
+				5E719E5228144E6100FD0BB8 /* MyExtension.swift in Sources */,
 				5E719E1B28135F5000FD0BB8 /* Decoders.swift in Sources */,
 				5E719E3F281396C600FD0BB8 /* HomeVC.swift in Sources */,
 				5E719E21281366B300FD0BB8 /* APIKey.swift in Sources */,

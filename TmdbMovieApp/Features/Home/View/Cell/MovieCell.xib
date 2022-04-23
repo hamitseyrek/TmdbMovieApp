@@ -30,7 +30,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WO-LX-EIh">
-                        <rect key="frame" x="128" y="24" width="163" height="18"/>
+                        <rect key="frame" x="128" y="24" width="203" height="18"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -50,11 +50,11 @@
                         <color key="textColor" systemColor="systemGrayColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mcO-Ld-vQA">
-                        <rect key="frame" x="335" y="2.5" width="17" height="131"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mcO-Ld-vQA">
+                        <rect key="frame" x="335" y="2" width="10" height="132.5"/>
                         <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="17" id="khz-Dt-1Io"/>
+                            <constraint firstAttribute="width" constant="10" id="khz-Dt-1Io"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -63,13 +63,13 @@
                     <constraint firstItem="4WO-LX-EIh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="7DX-WW-KVz"/>
                     <constraint firstAttribute="bottom" secondItem="YAL-c8-DpP" secondAttribute="bottom" constant="16" id="Aqc-kz-z4I"/>
                     <constraint firstItem="YAL-c8-DpP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="JSv-UC-gI1"/>
-                    <constraint firstItem="mcO-Ld-vQA" firstAttribute="leading" secondItem="4WO-LX-EIh" secondAttribute="trailing" constant="44" id="NAs-dF-jN4"/>
+                    <constraint firstAttribute="trailing" secondItem="4WO-LX-EIh" secondAttribute="trailing" constant="44" id="S2o-xa-x28"/>
                     <constraint firstAttribute="trailing" secondItem="QbZ-63-BSW" secondAttribute="trailing" constant="44" id="VzZ-YF-j0L"/>
                     <constraint firstItem="YAL-c8-DpP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="dxT-rT-CUv"/>
                     <constraint firstAttribute="bottom" secondItem="QbZ-63-BSW" secondAttribute="bottom" constant="16" id="e5F-zZ-HL9"/>
                     <constraint firstItem="4WO-LX-EIh" firstAttribute="leading" secondItem="YAL-c8-DpP" secondAttribute="trailing" constant="8" id="f8m-6d-GNU"/>
                     <constraint firstItem="TCd-Fs-Lp9" firstAttribute="top" secondItem="4WO-LX-EIh" secondAttribute="bottom" constant="8" id="iJE-ko-wav"/>
-                    <constraint firstAttribute="trailing" secondItem="mcO-Ld-vQA" secondAttribute="trailing" constant="23" id="nem-OD-fiF"/>
+                    <constraint firstAttribute="trailing" secondItem="mcO-Ld-vQA" secondAttribute="trailing" constant="30" id="nem-OD-fiF"/>
                     <constraint firstItem="TCd-Fs-Lp9" firstAttribute="leading" secondItem="YAL-c8-DpP" secondAttribute="trailing" constant="8" id="vdI-SX-dQP"/>
                     <constraint firstAttribute="trailing" secondItem="TCd-Fs-Lp9" secondAttribute="trailing" constant="44" id="vj0-Sf-fuG"/>
                     <constraint firstAttribute="bottom" secondItem="mcO-Ld-vQA" secondAttribute="bottom" id="z1c-U3-Il1"/>
@@ -86,7 +86,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="mobii" width="200" height="300"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
