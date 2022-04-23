@@ -10,6 +10,8 @@ import UIKit
 class MovieCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var movieOverview: UILabel!
     
     var movie: Movie? {
         didSet {
@@ -33,12 +35,15 @@ extension MovieCollectionViewCell {
         
         guard let movie = self.movie else { return }
         
-        if let posterPath = movie.posterPath {
+        if let posterPath = movie.backdropPath {
             let imageUrl = "\(Constants.URL.imageUrl)\(String(describing: posterPath))"
             imageView.downloaded(from: imageUrl)
         }
         else {
             imageView.image =  UIImage(systemName: "rays")
         }
+        
+        movieTitle.text = "\(movie.title) (\(movie.releaseDate.formatted(.iso8601.year())))"
+        movieOverview.text = movie.overview
     }
 }

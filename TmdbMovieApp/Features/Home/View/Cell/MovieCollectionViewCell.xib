@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,25 +17,55 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" image="square.and.arrow.up.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gJ2-Er-k0C">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" image="rays" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gJ2-Er-k0C">
+                        <rect key="frame" x="0.0" y="-0.5" width="414" height="271.5"/>
+                        <color key="tintColor" systemColor="systemGrayColor"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHZ-R9-XbN">
+                        <rect key="frame" x="16" y="167" width="382" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="e6s-TK-yS0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh0-QS-GqB">
+                        <rect key="frame" x="16" y="199" width="382" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="08r-Yc-GPE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="gHZ-R9-XbN" secondAttribute="bottom" constant="80" id="4kt-CU-ayB"/>
                 <constraint firstAttribute="trailing" secondItem="gJ2-Er-k0C" secondAttribute="trailing" id="B0b-cF-buA"/>
                 <constraint firstAttribute="bottom" secondItem="gJ2-Er-k0C" secondAttribute="bottom" id="Dz8-TD-70M"/>
+                <constraint firstItem="gHZ-R9-XbN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="X82-MB-KS7"/>
+                <constraint firstAttribute="trailing" secondItem="gHZ-R9-XbN" secondAttribute="trailing" constant="16" id="c3a-pH-2QR"/>
                 <constraint firstAttribute="top" secondItem="gJ2-Er-k0C" secondAttribute="top" id="grO-1x-Vtt"/>
+                <constraint firstAttribute="trailing" secondItem="oh0-QS-GqB" secondAttribute="trailing" constant="16" id="lZF-uD-3xB"/>
+                <constraint firstItem="oh0-QS-GqB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="rFl-89-Kbg"/>
+                <constraint firstAttribute="bottom" secondItem="oh0-QS-GqB" secondAttribute="bottom" constant="40" id="vq3-Qp-27J"/>
                 <constraint firstItem="gJ2-Er-k0C" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wmx-i1-lua"/>
             </constraints>
             <connections>
                 <outlet property="imageView" destination="gJ2-Er-k0C" id="VKd-eE-7SH"/>
+                <outlet property="movieOverview" destination="oh0-QS-GqB" id="50c-7R-7NV"/>
+                <outlet property="movieTitle" destination="gHZ-R9-XbN" id="JPs-OV-HaB"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="100.78125"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="square.and.arrow.up.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="rays" catalog="system" width="128" height="122"/>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

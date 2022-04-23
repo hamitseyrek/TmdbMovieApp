@@ -13,6 +13,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
     
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var sliderCollectionView: UICollectionView!
     var sliderTimer: Timer?
     var currentCellIndex = 0
@@ -20,7 +21,8 @@ class HomeVC: UIViewController {
     private var viewModel = HomeViewModel()
     
     private var disposeBag = DisposeBag()
-    private var movies = [Movie]()
+    private var upcomingMovies = [Movie]()
+    private var nowPlayingMovies = [Movie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,21 +35,22 @@ class HomeVC: UIViewController {
         sliderCollectionView.delegate = self
         sliderCollectionView.dataSource = self
         sliderCollectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "CollectionCell")
+        // for ignore safe area
         sliderCollectionView.contentInsetAdjustmentBehavior = .never
 
-        displayMovies()
+        displayUpcomingMovies()
+        displayNowPlayingMovies()
         startTimerForSlider()
         
+        pageControl.numberOfPages = 20
+        pageControl.currentPage = 0
         // Do any additional setup after loading the view.
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-            return .lightContent
-        }
 }
 
 extension HomeVC {
     
-    private func displayMovies() {
+    private func displayUpcomingMovies() {
         
         return viewModel.getUpcomingMovies()
         // Handle RxSwift concurrency, execute on Main Thread
@@ -56,17 +59,36 @@ extension HomeVC {
         // Subscribe observer to Observable
             .subscribe(
                 onNext: { [weak self] movies in
-                    self?.movies = movies
+                    self?.upcomingMovies = movies
                     print("movies in view: \(movies.map { $0.title })")
-                    //print("movies in view: \(movies.map { $0.releaseDate.formatted(.iso8601.year()) })")
-                    self?.updateTableView()
+
+                    self?.updateTableAndCollectionView()
                 }, onError: { error in
                     print("error in view: \(error)")
                     // Finalize the RxSwift sequence (Disposable)
                 }, onCompleted: {}).disposed(by: disposeBag)
     }
     
-    private func updateTableView() {
+    private func displayNowPlayingMovies() {
+        
+        return viewModel.getNowPlayingMovies()
+        // Handle RxSwift concurrency, execute on Main Thread
+            .subscribe(on: MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
+        // Subscribe observer to Observable
+            .subscribe(
+                onNext: { [weak self] movies in
+                    self?.nowPlayingMovies = movies
+                    print("movies in view: \(movies.map { $0.title })")
+
+                    self?.updateTableAndCollectionView()
+                }, onError: { error in
+                    print("error in view: \(error)")
+                    // Finalize the RxSwift sequence (Disposable)
+                }, onCompleted: {}).disposed(by: disposeBag)
+    }
+    
+    private func updateTableAndCollectionView() {
         
         DispatchQueue.main.async { [weak self] in
             
@@ -75,17 +97,29 @@ extension HomeVC {
             
             self?.activity.stopAnimating()
             self?.activity.isHidden = true
+            
         }
     }
     
+    
+    // Automatic slide
     func startTimerForSlider() {
-        sliderTimer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(moveToNextIndex), userInfo: nil, repeats: true)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.sliderTimer = Timer.scheduledTimer(timeInterval: 3.5, target: self as Any, selector: #selector(self?.moveToNextIndex), userInfo: nil, repeats: true)
+        }
     }
     
     @objc func moveToNextIndex() {
-        if currentCellIndex < movies.count - 1 {
+        
+        if currentCellIndex < nowPlayingMovies.count - 1 {
             currentCellIndex += 1
             sliderCollectionView.scrollToItem(at: IndexPath(item: currentCellIndex, section: 0), at: .centeredHorizontally, animated: true)
+            pageControl.currentPage = currentCellIndex
+        } else {
+            currentCellIndex = 0
+            sliderCollectionView.scrollToItem(at: IndexPath(item: currentCellIndex, section: 0), at: .centeredHorizontally, animated: true)
+            pageControl.currentPage = currentCellIndex
         }
     }
     
@@ -94,20 +128,20 @@ extension HomeVC {
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return upcomingMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MovieCell else {
             fatalError("Error dequing cell: MovieCell")
         }
-        let movie = movies[indexPath.row]
+        let movie = upcomingMovies[indexPath.row]
         cell.movie = movie
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movie = movies[indexPath.row]
+        let movie = upcomingMovies[indexPath.row]
         // do something
     }
 }
@@ -115,23 +149,19 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        return nowPlayingMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("***************44444444444")
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as? MovieCollectionViewCell else {
             fatalError("Error dequing cell: CollectionCell")
-            print("***************5")
         }
-        print("***************6")
-        let movie = movies[indexPath.row]
+        let movie = nowPlayingMovies[indexPath.row]
         cell.movie = movie
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print("**********", collectionView.frame.height)
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
@@ -140,6 +170,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let movie = movies[indexPath.row]
+        let movie = nowPlayingMovies[indexPath.row]
     }
 }

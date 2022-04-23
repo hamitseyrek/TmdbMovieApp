@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="TmdbMovieApp" customModuleProvider="target">
             <connections>
                 <outlet property="activity" destination="zQ5-gC-MGU" id="aCW-Pa-gmn"/>
+                <outlet property="pageControl" destination="G2w-Mj-beL" id="wvD-P7-nMI"/>
                 <outlet property="sliderCollectionView" destination="t2i-dF-Kdu" id="HWo-6b-MJu"/>
                 <outlet property="tableView" destination="LPk-E0-ZxT" id="mQP-qc-IFh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -34,6 +35,12 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="G2w-Mj-beL">
+                    <rect key="frame" x="16" y="247" width="382" height="8"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="8" id="9om-I7-x1f"/>
+                    </constraints>
+                </pageControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LPk-E0-ZxT">
                     <rect key="frame" x="0.0" y="271" width="414" height="625"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -50,13 +57,16 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="top" secondItem="t2i-dF-Kdu" secondAttribute="top" id="3UT-rt-1Pr"/>
+                <constraint firstItem="LPk-E0-ZxT" firstAttribute="top" secondItem="G2w-Mj-beL" secondAttribute="bottom" constant="16" id="7tr-K7-o6t"/>
                 <constraint firstItem="zQ5-gC-MGU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="94n-57-VGU"/>
                 <constraint firstItem="t2i-dF-Kdu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BfS-iV-R6t"/>
                 <constraint firstItem="zQ5-gC-MGU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="T90-Qd-7LW"/>
                 <constraint firstItem="t2i-dF-Kdu" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="bBq-yD-UgT"/>
                 <constraint firstItem="LPk-E0-ZxT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="bfw-Hd-gvI"/>
                 <constraint firstItem="LPk-E0-ZxT" firstAttribute="top" secondItem="t2i-dF-Kdu" secondAttribute="bottom" id="cET-oc-9ti"/>
+                <constraint firstItem="G2w-Mj-beL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="fgo-SN-DtU"/>
                 <constraint firstAttribute="bottom" secondItem="LPk-E0-ZxT" secondAttribute="bottom" id="iex-eE-kAP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="G2w-Mj-beL" secondAttribute="trailing" constant="16" id="jey-L0-39L"/>
                 <constraint firstItem="LPk-E0-ZxT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lQ9-At-VjK"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="86.383928571428569"/>
