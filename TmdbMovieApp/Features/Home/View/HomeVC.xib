@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="TmdbMovieApp" customModuleProvider="target">
             <connections>
                 <outlet property="activity" destination="zQ5-gC-MGU" id="aCW-Pa-gmn"/>
+                <outlet property="sliderCollectionView" destination="t2i-dF-Kdu" id="HWo-6b-MJu"/>
                 <outlet property="tableView" destination="LPk-E0-ZxT" id="mQP-qc-IFh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,38 +21,43 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2PL-jd-8Lj">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="t2i-dF-Kdu">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="2PL-jd-8Lj" secondAttribute="height" multiplier="414:271" id="8CG-Sj-l9c"/>
-                        <constraint firstAttribute="height" constant="271" id="dsA-m2-3sG"/>
+                        <constraint firstAttribute="height" constant="271" id="wld-Sz-PAN"/>
                     </constraints>
-                </view>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dNh-Vk-RTt">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LPk-E0-ZxT">
                     <rect key="frame" x="0.0" y="271" width="414" height="625"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="zQ5-gC-MGU">
-                    <rect key="frame" x="177" y="418" width="60" height="60"/>
+                    <rect key="frame" x="172" y="413" width="70" height="70"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="czK-iQ-rQt"/>
-                        <constraint firstAttribute="height" constant="60" id="p2p-ds-57Y"/>
+                        <constraint firstAttribute="width" secondItem="zQ5-gC-MGU" secondAttribute="height" multiplier="1:1" id="4bs-GH-jAK"/>
+                        <constraint firstAttribute="width" constant="70" id="txg-tK-CKz"/>
                     </constraints>
                 </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="LPk-E0-ZxT" firstAttribute="top" secondItem="2PL-jd-8Lj" secondAttribute="bottom" id="6vw-eR-KAC"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2PL-jd-8Lj" secondAttribute="trailing" id="FSp-4z-Bye"/>
-                <constraint firstItem="2PL-jd-8Lj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LM9-8z-kvr"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="2PL-jd-8Lj" secondAttribute="top" constant="44" id="TU4-gs-Mme"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LPk-E0-ZxT" secondAttribute="trailing" id="YFL-99-YHP"/>
-                <constraint firstItem="zQ5-gC-MGU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="axn-Xd-Cgb"/>
-                <constraint firstItem="LPk-E0-ZxT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mM4-kf-T8O"/>
-                <constraint firstItem="LPk-E0-ZxT" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="34" id="oO8-RC-PbB"/>
-                <constraint firstItem="zQ5-gC-MGU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pTS-zF-FL0"/>
+                <constraint firstAttribute="top" secondItem="t2i-dF-Kdu" secondAttribute="top" id="3UT-rt-1Pr"/>
+                <constraint firstItem="zQ5-gC-MGU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="94n-57-VGU"/>
+                <constraint firstItem="t2i-dF-Kdu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BfS-iV-R6t"/>
+                <constraint firstItem="zQ5-gC-MGU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="T90-Qd-7LW"/>
+                <constraint firstItem="t2i-dF-Kdu" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="bBq-yD-UgT"/>
+                <constraint firstItem="LPk-E0-ZxT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="bfw-Hd-gvI"/>
+                <constraint firstItem="LPk-E0-ZxT" firstAttribute="top" secondItem="t2i-dF-Kdu" secondAttribute="bottom" id="cET-oc-9ti"/>
+                <constraint firstAttribute="bottom" secondItem="LPk-E0-ZxT" secondAttribute="bottom" id="iex-eE-kAP"/>
+                <constraint firstItem="LPk-E0-ZxT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lQ9-At-VjK"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="86.383928571428569"/>
         </view>
