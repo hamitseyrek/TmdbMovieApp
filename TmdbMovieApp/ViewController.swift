@@ -13,8 +13,8 @@ class HomeViewModel {
   private let managerConnections = ApiService()
 
 
-  func getUpcomingMovies() -> Observable<[Movie]> {
-    return managerConnections.getUpcomingMovies()
+  func getUpcomingMovies() -> Observable<Movie> {
+      return managerConnections.getMovieDetail(movieID: 313297)
   }
   
 }
@@ -43,8 +43,8 @@ extension ViewController {
       .observe(on: MainScheduler.instance)
       // Subscribe observer to Observable
       .subscribe(
-        onNext: { [weak self] movies in
-            print("movies in view: \(movies.map { $0.title })")
+        onNext: {
+            print("movies in view: \($0.title)")
         }, onError: { error in
           print("error in view: \(error)")
           // Finalize the RxSwift sequence (Disposable)
