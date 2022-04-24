@@ -39,6 +39,7 @@ enum NetworkRequest {
             } catch {
                 return completion(.failure(.serializationError))
             }
+            
         }.resume()
         session.finishTasksAndInvalidate()
     }

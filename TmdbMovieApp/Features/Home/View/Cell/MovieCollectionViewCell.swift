@@ -20,11 +20,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("Buraya da geldim*****************")
-        print("Buraya da geldim*****************")
-        print("Buraya da geldim*****************")
-        print("Buraya da geldim*****************")
-        print("Buraya da geldim*****************")
         // Initialization code
     }
 }

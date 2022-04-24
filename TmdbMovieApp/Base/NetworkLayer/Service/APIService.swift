@@ -12,15 +12,15 @@ class ApiService {
     
     // Create Observable objects
     
-    func getUpcomingMovies() -> Observable<[Movie]> {
+    func getUpcomingMovies(page: Int) -> Observable<Movies> {
         
-        let path = "\(Constants.URL.upcomingUrl)?api_key=\(APIKey.key)&page=1"
+        let path = "\(Constants.URL.upcomingUrl)?api_key=\(APIKey.key)&page=\(page)"
         
         return Observable.create { observer in
             NetworkRequest.makeNetworkRequest(path: path) { (completion: Result<Movies, NetworkError>) in
                 switch completion {
                 case .success(data: let data):
-                    observer.onNext(data.results)
+                    observer.onNext(data)
                 case .failure(let error):
                     observer.onError(error)
                 }
@@ -29,15 +29,15 @@ class ApiService {
         }
     }
     
-    func getNowPlayingMovies() -> Observable<[Movie]> {
+    func getNowPlayingMovies(page: Int) -> Observable<Movies> {
         
-        let path = "\(Constants.URL.nowPlayingUrl)?api_key=\(APIKey.key)&page=1"
+        let path = "\(Constants.URL.nowPlayingUrl)?api_key=\(APIKey.key)&page=\(page)"
         
         return Observable.create { observer in
             NetworkRequest.makeNetworkRequest(path: path) { (completion: Result<Movies, NetworkError>) in
                 switch completion {
                 case .success(data: let data):
-                    observer.onNext(data.results)
+                    observer.onNext(data)
                 case .failure(let error):
                     observer.onError(error)
                 }

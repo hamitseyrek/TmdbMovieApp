@@ -12,17 +12,21 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
+    var tablePageIndex = 1
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var sliderCollectionView: UICollectionView!
     var sliderTimer: Timer?
     var currentCellIndex = 0
+    var collectionPageIndex = 1
     
     private var viewModel = HomeViewModel()
     
     private var disposeBag = DisposeBag()
     private var upcomingMovies = [Movie]()
     private var nowPlayingMovies = [Movie]()
+    
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +41,12 @@ class HomeVC: UIViewController {
         sliderCollectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "CollectionCell")
         // for ignore safe area
         sliderCollectionView.contentInsetAdjustmentBehavior = .never
-
+        
+        // refresh for both of tableView and CollectionView
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        
         displayUpcomingMovies()
         displayNowPlayingMovies()
         startTimerForSlider()
@@ -52,17 +61,40 @@ extension HomeVC {
     
     private func displayUpcomingMovies() {
         
-        return viewModel.getUpcomingMovies()
+        return viewModel.getUpcomingMovies(page: tablePageIndex)
         // Handle RxSwift concurrency, execute on Main Thread
             .subscribe(on: MainScheduler.instance)
             .observe(on: MainScheduler.instance)
         // Subscribe observer to Observable
             .subscribe(
                 onNext: { [weak self] movies in
-                    self?.upcomingMovies = movies
-                    print("movies in view: \(movies.map { $0.title })")
-
+                    
+                    self?.upcomingMovies = movies.results
+                    
                     self?.updateTableAndCollectionView()
+                }, onError: { error in
+                    print("error in view: \(error)")
+                    // Finalize the RxSwift sequence (Disposable)
+                }, onCompleted: {}).disposed(by: disposeBag)
+    }
+    
+    private func loadMoreUpcomingMovies() {
+        
+        tablePageIndex += 1
+        
+        return viewModel.getUpcomingMovies(page: tablePageIndex)
+        // Handle RxSwift concurrency, execute on Main Thread
+            .subscribe(on: MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
+        // Subscribe observer to Observable
+            .subscribe(
+                onNext: { [weak self] movies in
+                    
+                    if self?.tablePageIndex ?? movies.totalPage < movies.totalPage {
+                        self?.upcomingMovies.append(contentsOf: movies.results)
+                        self?.updateTableAndCollectionView()
+                    }
+                    
                 }, onError: { error in
                     print("error in view: \(error)")
                     // Finalize the RxSwift sequence (Disposable)
@@ -71,16 +103,40 @@ extension HomeVC {
     
     private func displayNowPlayingMovies() {
         
-        return viewModel.getNowPlayingMovies()
+        return viewModel.getNowPlayingMovies(page: collectionPageIndex)
         // Handle RxSwift concurrency, execute on Main Thread
             .subscribe(on: MainScheduler.instance)
             .observe(on: MainScheduler.instance)
         // Subscribe observer to Observable
             .subscribe(
                 onNext: { [weak self] movies in
-                    self?.nowPlayingMovies = movies
-                    print("movies in view: \(movies.map { $0.title })")
-
+                    
+                    self?.nowPlayingMovies = movies.results
+                    self?.updateTableAndCollectionView()
+                    
+                }, onError: { error in
+                    print("error in view: \(error)")
+                    // Finalize the RxSwift sequence (Disposable)
+                }, onCompleted: {}).disposed(by: disposeBag)
+    }
+    
+    private func loadMoreNowPlayingMovies() {
+        
+        collectionPageIndex += 1
+        
+        return viewModel.getNowPlayingMovies(page: collectionPageIndex)
+        // Handle RxSwift concurrency, execute on Main Thread
+            .subscribe(on: MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
+        // Subscribe observer to Observable
+            .subscribe(
+                onNext: { [weak self] movies in
+                    
+                    if self?.collectionPageIndex ?? movies.totalPage < movies.totalPage {
+                        self?.nowPlayingMovies.append(contentsOf: movies.results)
+                        self?.updateTableAndCollectionView()
+                    }
+                    
                     self?.updateTableAndCollectionView()
                 }, onError: { error in
                     print("error in view: \(error)")
@@ -123,6 +179,15 @@ extension HomeVC {
         }
     }
     
+    @objc func refresh(_ sender: AnyObject) {
+        let session = URLSession.shared
+        session.invalidateAndCancel()
+        tablePageIndex = 1
+        collectionPageIndex = 1
+        displayUpcomingMovies()
+        displayNowPlayingMovies()
+        refreshControl.endRefreshing()
+    }
 }
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
@@ -137,6 +202,11 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         }
         let movie = upcomingMovies[indexPath.row]
         cell.movie = movie
+        
+        //loadmore
+        if indexPath.row == upcomingMovies.count - 1 {
+            self.loadMoreUpcomingMovies()
+        }
         return cell
     }
     
@@ -158,6 +228,11 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         }
         let movie = nowPlayingMovies[indexPath.row]
         cell.movie = movie
+        
+        //loadmore
+        if indexPath.row == upcomingMovies.count - 1 {
+            self.loadMoreNowPlayingMovies()
+        }
         return cell
     }
     

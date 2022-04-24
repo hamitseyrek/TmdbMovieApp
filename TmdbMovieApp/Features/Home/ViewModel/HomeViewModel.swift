@@ -11,14 +11,13 @@ import RxSwift
 class HomeViewModel {
     
     private let apiService = ApiService()
-    @Published var image: Data?
     
-    func getUpcomingMovies() -> Observable<[Movie]> {
-        return apiService.getUpcomingMovies()
+    func getUpcomingMovies(page: Int) -> Observable<Movies> {
+        return apiService.getUpcomingMovies(page: page)
     }
     
-    func getNowPlayingMovies() -> Observable<[Movie]> {
-        return apiService.getNowPlayingMovies()
+    func getNowPlayingMovies(page: Int) -> Observable<Movies> {
+        return apiService.getNowPlayingMovies(page: page)
     }
     
     func getMovieDetail(movieID: Int) -> Observable<Movie> {
