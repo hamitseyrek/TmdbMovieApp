@@ -19,8 +19,4 @@ class HomeViewModel {
     func getNowPlayingMovies(page: Int) -> Observable<Movies> {
         return apiService.getNowPlayingMovies(page: page)
     }
-    
-    func getMovieDetail(movieID: Int) -> Observable<Movie> {
-        return apiService.getMovieDetail(movieID: movieID)
-    }
 }

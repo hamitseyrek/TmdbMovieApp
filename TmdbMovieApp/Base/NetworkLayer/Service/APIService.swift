@@ -46,12 +46,12 @@ class ApiService {
         }
     }
     
-    func getMovieDetail(movieID: Int) -> Observable<Movie> {
+    func getMovieDetail(movieID: Int) -> Observable<MovieDetail> {
         
         let path = "\(Constants.URL.detailUrl)\(movieID)?api_key=\(APIKey.key)"
         
         return Observable.create { observer in
-            NetworkRequest.makeNetworkRequest(path: path) { (completion: Result<Movie, NetworkError>) in
+            NetworkRequest.makeNetworkRequest(path: path) { (completion: Result<MovieDetail, NetworkError>) in
                 switch completion {
                 case .success(data: let data):
                     observer.onNext(data)

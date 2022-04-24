@@ -28,6 +28,8 @@ class HomeVC: UIViewController {
     
     let refreshControl = UIRefreshControl()
     
+    private weak var sourceView: UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("buradayım")
@@ -211,8 +213,16 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movie = upcomingMovies[indexPath.row]
         // do something
+        var movie = upcomingMovies[indexPath.row]
+    //    tableView.tableHeaderView = nil
+        
+        
+        let vc = DetailVC(nibName: "DetailVC", bundle: Bundle.main)
+        vc.movieID = movie.id
+        print("****************")
+        
+      self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
