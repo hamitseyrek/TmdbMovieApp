@@ -32,7 +32,6 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("buradayım")
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -55,8 +54,9 @@ class HomeVC: UIViewController {
         
         pageControl.numberOfPages = 20
         pageControl.currentPage = 0
-        // Do any additional setup after loading the view.
     }
+    
+    
 }
 
 extension HomeVC {
@@ -159,7 +159,6 @@ extension HomeVC {
         }
     }
     
-    
     // Automatic slide
     func startTimerForSlider() {
         
@@ -199,9 +198,11 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MovieCell else {
             fatalError("Error dequing cell: MovieCell")
         }
+        
         let movie = upcomingMovies[indexPath.row]
         cell.movie = movie
         
@@ -213,16 +214,12 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // do something
-        var movie = upcomingMovies[indexPath.row]
-    //    tableView.tableHeaderView = nil
-        
+
+        let movie = upcomingMovies[indexPath.row]
         
         let vc = DetailVC(nibName: "DetailVC", bundle: Bundle.main)
         vc.movieID = movie.id
-        print("****************")
-        
-      self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -255,6 +252,11 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let movie = nowPlayingMovies[indexPath.row]
+        
+        let vc = DetailVC(nibName: "DetailVC", bundle: Bundle.main)
+        vc.movieID = movie.id
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

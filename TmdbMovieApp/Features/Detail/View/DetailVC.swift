@@ -14,7 +14,7 @@ class DetailVC: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var overviewLabel: UITextView!
+    @IBOutlet weak var overviewTextView: UITextView!
     
     var movieDetail: MovieDetail?
     var movieID: Int?
@@ -25,9 +25,8 @@ class DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        overviewTextView.isEditable = false
         displayMovieDetail()
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -41,35 +40,46 @@ extension DetailVC {
             .subscribe(onNext: { [weak self] movie in
                 
                 self?.movieDetail = movie
-                self?.showMovieData(movie: movie)
+
                 DispatchQueue.main.async {
-                    self?.title = "\(movie.title) (\(movie.releaseDate.formatted(.iso8601.year())))"
-                    self?.navigationController?.navigationBar.backItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+                    
+                    self?.showMovieData()
+                                        
+                    self?.configureNavBar()
+                    
                 }
             }, onError: { error in
                 print("Error observer DetailView: \(error)")
             }).disposed(by: disposeBag)
     }
     
-    private func showMovieData(movie: MovieDetail) {
+    private func showMovieData() {
         
         guard let movie = self.movieDetail else { return }
-        print(movie.imdbID)
         
         if let posterPath = movie.backdropPath {
             let imageUrl = "\(Constants.URL.imageUrl)\(String(describing: posterPath))"
-            print("***********selam")
             imageView.downloaded(from: imageUrl)
         }
         else {
             imageView.image =  UIImage(systemName: "rays")
         }
         
-        DispatchQueue.main.async {
-            self.overviewLabel.text = movie.overview
+            self.overviewTextView.text = movie.overview
             self.titleLabel.text = "\(movie.title) (\(movie.releaseDate.formatted(.iso8601.year())))"
             self.voteLabel.text = String(movie.voteAverage)
             self.dateLabel.text = MyHelper().formatter.string(from: movie.releaseDate)
-        }
+    }
+    
+    private func configureNavBar() {
+        
+        guard let movie = self.movieDetail else { return }
+
+        self.title = "\(movie.title) (\(movie.releaseDate.formatted(.iso8601.year())))"
+        self.navigationController?.navigationBar.backItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = .black
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.bold)]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
+    
     }
 }
