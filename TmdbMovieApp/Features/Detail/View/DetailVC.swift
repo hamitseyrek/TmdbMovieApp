@@ -10,7 +10,11 @@ import RxSwift
 
 class DetailVC: UIViewController {
     
+    @IBOutlet weak var voteLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var overviewLabel: UITextView!
     
     var movieDetail: MovieDetail?
     var movieID: Int?
@@ -59,6 +63,13 @@ extension DetailVC {
         }
         else {
             imageView.image =  UIImage(systemName: "rays")
+        }
+        
+        DispatchQueue.main.async {
+            self.overviewLabel.text = movie.overview
+            self.titleLabel.text = "\(movie.title) (\(movie.releaseDate.formatted(.iso8601.year())))"
+            self.voteLabel.text = String(movie.voteAverage)
+            self.dateLabel.text = MyHelper().formatter.string(from: movie.releaseDate)
         }
     }
 }

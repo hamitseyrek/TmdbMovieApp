@@ -12,7 +12,9 @@ extension UIImageView {
     
     func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
         
-        
+//        DispatchQueue.main.async {
+//            self.contentMode = mode
+//        }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard

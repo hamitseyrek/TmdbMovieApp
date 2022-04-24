@@ -10,8 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailVC" customModule="TmdbMovieApp" customModuleProvider="target">
             <connections>
+                <outlet property="dateLabel" destination="XwR-iA-5Q2" id="NQT-W4-B4n"/>
                 <outlet property="imageView" destination="oGP-pN-s6L" id="wMx-Ye-fZG"/>
+                <outlet property="overviewLabel" destination="mpk-As-4Il" id="a4P-uU-9ft"/>
+                <outlet property="titleLabel" destination="Xcw-x8-jcb" id="m8G-jY-bHB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="voteLabel" destination="FLJ-X3-UXo" id="uYO-CD-zu2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -48,7 +52,7 @@
                         <constraint firstAttribute="width" secondItem="FLJ-X3-UXo" secondAttribute="height" multiplier="14:9" id="UtT-1r-vmE"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="foa-WH-KWV"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -58,7 +62,7 @@
                         <constraint firstAttribute="height" constant="18" id="BiG-Lw-wG7"/>
                         <constraint firstAttribute="width" secondItem="JLy-Wf-eYe" secondAttribute="height" multiplier="11:9" constant="4" id="NJM-lq-pGu"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" systemColor="systemGrayColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -69,11 +73,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15.06.2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwR-iA-5Q2">
-                    <rect key="frame" x="182" y="345" width="83.5" height="21"/>
+                    <rect key="frame" x="182" y="345" width="66.5" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="MSg-0k-zL1"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -89,19 +93,7 @@
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mpk-As-4Il">
                     <rect key="frame" x="16" y="440" width="382" height="444"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <mutableString key="text">Labelttps://api.themoviedb.org/3/movie/767825?api_key=7e5c91391397f95eb1d23124a14bd6a7
-2022-04-24 06:32:36.949973+0300 TmdbMovieApp[17372:468297] [NSURLSession sharedSession] may not be invalidated
-tt12585076
-***********selam
-2022-04-24 06:32:37.108765+0300 TmdbMovieApp[17372:468398] [boringssl] boringssl_metrics_log_metric_block_invoke(153) Failed to log metricttps://api.themoviedb.org/3/movie/767825?api_key=7e5c91391397f95eb1d23124a14bd6a7
-2022-04-24 06:32:36.949973+0300 TmdbMovieApp[17372:468297] [NSURLSession sharedSession] may not be invalidated
-tt12585076
-***********selam
-2022-04-24 06:32:37.108765+0300 TmdbMovieApp[17372:468398] [boringssl] boringssl_metrics_log_metric_block_invoke(153) Failed to log metricttps://api.themoviedb.org/3/movie/767825?api_key=7e5c91391397f95eb1d23124a14bd6a7
-2022-04-24 06:32:36.949973+0300 TmdbMovieApp[17372:468297] [NSURLSession sharedSession] may not be invalidated
-tt12585076
-***********selam
-2022-04-24 06:32:37.108765+0300 TmdbMovieApp[17372:468398] [boringssl] boringssl_metrics_log_metric_block_invoke(153) Failed to log metric</mutableString>
+                    <string key="text">A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.</string>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
